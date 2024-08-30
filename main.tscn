@@ -1,0 +1,156 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3ifcv6kljrmg"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_p6kyr"]
+[ext_resource type="PackedScene" uid="uid://cm5koh5ii1dwf" path="res://Fighter/fighter.tscn" id="2_thjyr"]
+[ext_resource type="Script" path="res://Controllers/BattleController.gd" id="3_5i1hj"]
+[ext_resource type="Script" path="res://UI/PopUpTarget.gd" id="4_ivv4c"]
+[ext_resource type="Script" path="res://UI/PopUpBattleEnd.gd" id="4_qj8x5"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray("fighters", "battleController")]
+script = ExtResource("1_p6kyr")
+fighters = [NodePath("Participants/Weak Mikle"), NodePath("Participants/Faithful Daniel"), NodePath("Participants/Fat Manny"), NodePath("Participants/Best"), NodePath("Participants/Mediocre Smile"), NodePath("Participants/Strong Spirit"), NodePath("Participants/Almost Best"), NodePath("Participants/Speedy Merc"), NodePath("Participants/Glorious Hamster"), NodePath("Participants/Young Kris")]
+battleController = NodePath("BattleController")
+
+[node name="Participants" type="Node" parent="."]
+
+[node name="Weak Mikle" parent="Participants" instance=ExtResource("2_thjyr")]
+
+[node name="Faithful Daniel" parent="Participants" instance=ExtResource("2_thjyr")]
+_health = 17
+_initiative = 5
+
+[node name="Fat Manny" parent="Participants" instance=ExtResource("2_thjyr")]
+_health = 25
+
+[node name="Best" parent="Participants" instance=ExtResource("2_thjyr")]
+_health = 25
+_initiative = 8
+
+[node name="Mediocre Smile" parent="Participants" instance=ExtResource("2_thjyr")]
+_health = 20
+_initiative = 5
+
+[node name="Strong Spirit" parent="Participants" instance=ExtResource("2_thjyr")]
+_health = 21
+_initiative = 6
+
+[node name="Almost Best" parent="Participants" instance=ExtResource("2_thjyr")]
+_health = 25
+_initiative = 7
+
+[node name="Speedy Merc" parent="Participants" instance=ExtResource("2_thjyr")]
+_initiative = 8
+
+[node name="Glorious Hamster" parent="Participants" instance=ExtResource("2_thjyr")]
+_health = 19
+_initiative = 7
+
+[node name="Young Kris" parent="Participants" instance=ExtResource("2_thjyr")]
+_health = 16
+
+[node name="BattleController" type="Node" parent="." node_paths=PackedStringArray("_target_window", "_end_window")]
+script = ExtResource("3_5i1hj")
+_target_window = NodePath("../Control/PopUpTarget")
+_end_window = NodePath("../Control/PopUpBattleEnd")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PopUpBattleEnd" type="ColorRect" parent="Control" node_paths=PackedStringArray("_message", "_button")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.155
+anchor_top = 0.082
+anchor_right = 0.883
+anchor_bottom = 0.863
+offset_left = 0.440002
+offset_top = -0.136002
+offset_right = -0.215942
+offset_bottom = -0.223999
+color = Color(0.305062, 0.589011, 0.737837, 1)
+script = ExtResource("4_qj8x5")
+_message = NodePath("Message")
+_button = NodePath("RetryButton")
+
+[node name="Message" type="RichTextLabel" parent="Control/PopUpBattleEnd"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.225
+anchor_top = 0.215
+anchor_right = 0.772
+anchor_bottom = 0.368
+offset_left = -0.0500031
+offset_top = 0.209999
+offset_right = 0.0239868
+offset_bottom = -0.208008
+bbcode_enabled = true
+text = "[font_size={45}][center]DRAW[/center]"
+fit_content = true
+autowrap_mode = 2
+tab_size = 5
+shortcut_keys_enabled = false
+
+[node name="RetryButton" type="Button" parent="Control/PopUpBattleEnd"]
+layout_mode = 0
+offset_left = 295.0
+offset_top = 304.0
+offset_right = 554.0
+offset_bottom = 409.0
+text = "RETRY"
+
+[node name="PopUpTarget" type="ColorRect" parent="Control" node_paths=PackedStringArray("_targets_grid")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.155
+anchor_top = 0.079
+anchor_right = 0.883
+anchor_bottom = 0.86
+offset_left = 0.440002
+offset_top = -0.192001
+offset_right = -0.216003
+offset_bottom = -0.280029
+color = Color(0.305062, 0.589011, 0.737837, 1)
+script = ExtResource("4_ivv4c")
+_targets_grid = NodePath("Targets")
+
+[node name="Message" type="RichTextLabel" parent="Control/PopUpTarget"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.225
+anchor_top = 0.215
+anchor_right = 0.772
+anchor_bottom = 0.368
+offset_left = -0.0500031
+offset_top = 0.209999
+offset_right = 0.0239868
+offset_bottom = -0.208008
+bbcode_enabled = true
+text = "[font_size={45}][center]CHOOSE TARGET[/center]"
+fit_content = true
+autowrap_mode = 2
+tab_size = 5
+shortcut_keys_enabled = false
+
+[node name="Targets" type="GridContainer" parent="Control/PopUpTarget"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.165
+anchor_top = 0.542
+anchor_right = 0.848
+anchor_bottom = 0.968
+offset_left = -0.270004
+offset_top = -0.252014
+offset_right = 0.375977
+offset_bottom = 0.191986
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4

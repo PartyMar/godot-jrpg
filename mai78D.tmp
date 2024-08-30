@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3ifcv6kljrmg"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_p6kyr"]
+[ext_resource type="PackedScene" uid="uid://cm5koh5ii1dwf" path="res://Fighter/fighter.tscn" id="2_thjyr"]
+[ext_resource type="Script" path="res://Controllers/BattleController.gd" id="3_5i1hj"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray("fighters", "battleController")]
+script = ExtResource("1_p6kyr")
+fighters = [NodePath("Participants/Weak Mikle"), NodePath("Participants/Faithful Daniel"), NodePath("Participants/Fat Manny"), NodePath("Participants/Best"), NodePath("Participants/Mediocre Smile"), NodePath("Participants/Strong Spirit"), NodePath("Participants/Almost Best"), NodePath("Participants/Speedy Merc"), NodePath("Participants/Glorious Hamster"), NodePath("Participants/Young Kris")]
+battleController = NodePath("BattleController")
+
+[node name="Participants" type="Node" parent="."]
+
+[node name="Weak Mikle" parent="Participants" instance=ExtResource("2_thjyr")]
+
+[node name="Faithful Daniel" parent="Participants" instance=ExtResource("2_thjyr")]
+_health = 17
+_initiative = 5
+
+[node name="Fat Manny" parent="Participants" instance=ExtResource("2_thjyr")]
+_health = 25
+
+[node name="Best" parent="Participants" instance=ExtResource("2_thjyr")]
+_health = 25
+_initiative = 8
+
+[node name="Mediocre Smile" parent="Participants" instance=ExtResource("2_thjyr")]
+_health = 20
+_initiative = 5
+
+[node name="Strong Spirit" parent="Participants" instance=ExtResource("2_thjyr")]
+_health = 21
+_initiative = 6
+
+[node name="Almost Best" parent="Participants" instance=ExtResource("2_thjyr")]
+_health = 25
+_initiative = 7
+
+[node name="Speedy Merc" parent="Participants" instance=ExtResource("2_thjyr")]
+_initiative = 8
+
+[node name="Glorious Hamster" parent="Participants" instance=ExtResource("2_thjyr")]
+_health = 19
+_initiative = 7
+
+[node name="Young Kris" parent="Participants" instance=ExtResource("2_thjyr")]
+_health = 16
+
+[node name="BattleController" type="Node" parent="."]
+script = ExtResource("3_5i1hj")

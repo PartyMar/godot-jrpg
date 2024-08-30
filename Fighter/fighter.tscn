@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm5koh5ii1dwf"]
+
+[ext_resource type="Script" path="res://Fighter/fighter.gd" id="1_8na5h"]
+[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="2_7siyc"]
+[ext_resource type="Script" path="res://Components/InitiativeComponent.gd" id="3_2y5ed"]
+
+[node name="Fighter" type="Node" node_paths=PackedStringArray("health_component", "initiative_component")]
+script = ExtResource("1_8na5h")
+health_component = NodePath("HealthComponent")
+initiative_component = NodePath("InitiativeComponent")
+_health = 15
+_initiative = 4
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_7siyc")
+
+[node name="InitiativeComponent" type="Node" parent="."]
+script = ExtResource("3_2y5ed")

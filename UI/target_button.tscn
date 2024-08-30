@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://pxrad4al3rej"]
+
+[ext_resource type="Script" path="res://UI/TargetButton.gd" id="1_s0358"]
+
+[node name="TargetButton" type="Button"]
+custom_minimum_size = Vector2(100, 75)
+anchors_preset = -1
+anchor_right = 0.09
+anchor_bottom = 0.116
+offset_right = -103.68
+offset_bottom = -75.168
+text = "Strong Spirit"
+script = ExtResource("1_s0358")
